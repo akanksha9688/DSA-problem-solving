@@ -1,0 +1,58 @@
+#User function template for Python 3
+
+class Solution:
+    def majorityElement(self, arr):
+        Method 1 # Brute Force Approach
+
+*** Time Complexity O(n^2) ***
+
+        '''n=len(arr)
+        cnt=0
+        for i in range(n):
+            for j in range(n):
+                if arr[i]==arr[j]:
+                    cnt+=1
+                if cnt>n/2:
+                    return arr[i]
+            return -1'''
+            
+   Method 2 # using Hash Table or Hashing
+
+   *** Time Complexity O(n) ***
+
+        '''freq={}
+        n=len(arr)
+        for i in arr:#cnt occurance of number
+            if i in freq:
+                freq[i]+=1
+            else:
+                freq[i]=1
+        for key in freq:
+            if freq[key]>n//2:
+                return key
+        return -1'''
+    
+   Method 3 # Boyer Moore Algorithm 
+
+  *** Time Complexity O(n) ***
+
+        n=len(arr)
+        cnt=0
+        ele=None
+        for i in range(n):
+            if cnt==0:
+                cnt=1
+                ele=arr[i]
+            elif arr[i]==ele:
+                cnt+=1
+            else:
+                cnt-=1
+            
+        cnt1=0
+        for i in range(n):
+            if arr[i]==ele:
+                cnt1+=1
+        if cnt1 >(n/2):
+            return ele
+        return -1
+        
