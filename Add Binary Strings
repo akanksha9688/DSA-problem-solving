@@ -1,0 +1,30 @@
+#User function Template for python3
+  class Solution:
+  	def addBinary(self, s1, s2):
+  		# code here
+  		s1 = s1[::-1]
+        s2 = s2[::-1]
+        
+        result = []
+        carry = 0
+        max_length = max(len(s1), len(s2))
+        
+        # Perform addition
+        for i in range(max_length):
+            bit1 = int(s1[i]) if i < len(s1) else 0
+            bit2 = int(s2[i]) if i < len(s2) else 0
+            
+            # Calculate sum and carry
+            total = bit1 + bit2 + carry
+            result.append(str(total % 2))  # Append the bit
+            carry = total // 2            # Update the carry
+        
+        # Append remaining carry if any
+        if carry:
+            result.append(str(carry))
+        
+        # Reverse the result and remove leading zeros
+        result = ''.join(result[::-1]).lstrip('0')
+        
+        return result if result else "0"
+    
