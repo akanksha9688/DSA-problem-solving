@@ -1,0 +1,9 @@
+class Solution:
+    def checkIfExist(self, arr: List[int]) -> bool:
+        n = set()
+        for num in arr:
+            if num * 2 in n or num / 2 in n:
+                return True
+            n.add(num)
+        return False
+        
