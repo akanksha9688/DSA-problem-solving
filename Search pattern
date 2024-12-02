@@ -1,0 +1,17 @@
+#User function Template for python3
+
+class Solution:
+    def search(self, pat, txt):
+        # code here
+        # List to store the starting indices of pattern occurrences
+        result = []
+        n, m = len(txt), len(pat)
+    
+        # Traverse the text with a sliding window
+        for i in range(n - m + 1):
+            # Check if the substring from current index matches the pattern
+            if txt[i:i + m] == pat:
+                result.append(i)
+        
+        return result
+
