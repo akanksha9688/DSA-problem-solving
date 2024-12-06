@@ -1,0 +1,18 @@
+#User function Template for python3
+class Solution:
+    # Function to find hIndex
+    def hIndex(self, citations):
+        #code here
+        n = len(citations)
+        # Sort the citations array in descending order
+        citations.sort(reverse=True)
+        
+        # Iterate to find the maximum H-index
+        h_index = 0
+        for i in range(n):
+            # Check if the current value satisfies the H-index condition
+            if citations[i] >= i + 1:
+                h_index = i + 1
+            else:
+                break
+        return h_index
