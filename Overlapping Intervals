@@ -1,0 +1,23 @@
+class Solution:
+	def mergeOverlap(self, arr):
+		# Check if the array is empty
+        if not arr:
+            return []
+        
+        # Step 1: Sort intervals by their start time
+        arr.sort(key=lambda x: x[0])
+        
+        # Step 2: Initialize the result with the first interval
+        merged = [arr[0]]
+        
+        # Step 3: Iterate through the intervals and merge
+        for current in arr[1:]:
+            prev = merged[-1]  # Last interval in merged list
+            if current[0] <= prev[1]:  # Check for overlap
+                # Merge intervals by updating the end time
+                prev[1] = max(prev[1], current[1])
+            else:
+                # No overlap, add the current interval to the result
+                merged.append(current)
+        
+        return merged
